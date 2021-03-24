@@ -14,7 +14,7 @@
         android:rotation="17"
         android:rotationX="39"
         android:rotationY="4"
-        android:text="Hello, Sergei!"
+        android:text="Hello, Bro!"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
