@@ -4,8 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class MainActivity<b> extends AppCompatActivity {
-
+public class MainActivity extends AppCompatActivity {
 
 
     @Override
@@ -15,29 +14,29 @@ public class MainActivity<b> extends AppCompatActivity {
 
         int x = 25;
 
-        if( x > 20){
+        if (x > 20) {
             System.out.print("Равенстов верно");
         }
 
         int y = 48;
 
-        if( y > 69){
+        if (y > 69) {
             System.out.print("Равенство не выполнено");
-        }else {
+        } else {
             System.out.print("Равенство вополнено");
         }
 
         int p = 47;
 
-        switch (p){
+        switch (p) {
 
-            case 46 :
+            case 46:
                 System.out.print("Неверно");
                 break;
-            case 45 :
+            case 45:
                 System.out.print("Не выйдет");
                 break;
-            case 47 :
+            case 47:
                 System.out.print("Верно");
                 break;
         }
@@ -46,18 +45,18 @@ public class MainActivity<b> extends AppCompatActivity {
         int a = 4;
         int b = 6;
         int c = 10;
-        System.out.println("a + b =" + (a + b) );
-        System.out.println("b - a =" + (b - a) );
-        System.out.println("a * b =" + (a * b) );
-        System.out.println("b / a =" + (b / a) );
-        System.out.println("(a + b) / c =" + ( (a + b) / c) );
-        System.out.println("c % b =" + (c % b) );
-        System.out.println("c == (a + b)" + (c == (a + b) ) );
-        System.out.println("c !=a" + (c != a) );
-        System.out.println("c > a" +(c > a));
-        System.out.println("c < a" +(c < a));
-        System.out.println("c >= a" +(c >= a));
-        System.out.println("c <= a" +(c <= a));
+        System.out.println("a + b =" + (a + b));
+        System.out.println("b - a =" + (b - a));
+        System.out.println("a * b =" + (a * b));
+        System.out.println("b / a =" + (b / a));
+        System.out.println("(a + b) / c =" + ((a + b) / c));
+        System.out.println("c % b =" + (c % b));
+        System.out.println("c == (a + b)" + (c == (a + b)));
+        System.out.println("c !=a" + (c != a));
+        System.out.println("c > a" + (c > a));
+        System.out.println("c < a" + (c < a));
+        System.out.println("c >= a" + (c >= a));
+        System.out.println("c <= a" + (c <= a));
 
         boolean r = true;
         boolean e = false;
@@ -71,28 +70,34 @@ public class MainActivity<b> extends AppCompatActivity {
         System.out.println(" !r =" + q);
 
 
-        int month=3; //март
+        int month = 3; //март
         String season; //Время года
 
-        switch (month){
+        switch (month) {
 
-            case (1 || 2 || 12);
+            case (1):
+            case (2):
+            case (12):
                 System.out.print("Зимушка-зима");
                 break;
-            case (3 || 4 || 5):
+            case (3):
+            case (4):
+            case (5):
                 System.out.print("Весна");
                 break;
-            case (6 || 7 || 8):
+            case (6):
+            case (7):
+            case (8):
                 System.out.print("Лето");
                 break;
-            case (9 || 10 || 11):
+            case (9):
+            case (10):
+            case (11):
                 System.out.print("Осень");
                 break;
-            case (13):
+            default:
                 System.out.print("Не знаю");
-                break;
         }
 
     }
 }
-
