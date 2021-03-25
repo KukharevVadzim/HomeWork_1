@@ -11,25 +11,18 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         int x = 25;
-
         if (x > 20) {
             System.out.print("Равенстов верно");
         }
-
         int y = 48;
-
         if (y > 69) {
             System.out.print("Равенство не выполнено");
         } else {
             System.out.print("Равенство вополнено");
         }
-
         int p = 47;
-
         switch (p) {
-
             case 46:
                 System.out.print("Неверно");
                 break;
@@ -41,7 +34,6 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
         System.out.print("Ваш ответ" + p);
-
         int a = 4;
         int b = 6;
         int c = 10;
@@ -57,7 +49,6 @@ public class MainActivity extends AppCompatActivity {
         System.out.println("c < a" + (c < a));
         System.out.println("c >= a" + (c >= a));
         System.out.println("c <= a" + (c <= a));
-
         boolean r = true;
         boolean e = false;
         boolean t = r | e;
@@ -68,13 +59,9 @@ public class MainActivity extends AppCompatActivity {
         System.out.println(" r & e =" + u);
         System.out.println(" r ^ e =" + o);
         System.out.println(" !r =" + q);
-
-
         int month = 3; //март
         String season; //Время года
-
         switch (month) {
-
             case (1):
             case (2):
             case (12):
@@ -98,6 +85,38 @@ public class MainActivity extends AppCompatActivity {
             default:
                 System.out.print("Не знаю");
         }
-
+        int n = 5;
+        while (n > 0) {
+            System.out.println("Number: " + n--);
+        }
+        int l = 10;
+        do {
+            System.out.println("Number: " + l--);
+        } while (l > 0);
+        for (int i = 0; i < 10; i++) {
+            System.out.println("Number: " + i);
+        }
+        for (int i = 1, j = 4; i < j; i++, j--) {
+            System.out.println("i = " + i);
+            System.out.println("j = " + j);
+        }
+        for (int i = 1, j = 4; i < j; i++, j--) {
+            System.out.println("i = " + i);
+            System.out.println("j = " + j);
+        }
+        class Test {
+            public void main(String[] args) {
+                int[] array = {51,136,387};
+                for (int i:array) {
+                    System.out.println(i);
+                }
+            }
+        }
     }
+}
+class MyMethod {
+    static void drinkBeer(String beer){
+        System.out.print("Я люблю пить" + beer);
+    }
+
 }
