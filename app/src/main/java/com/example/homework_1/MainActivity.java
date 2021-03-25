@@ -1,11 +1,9 @@
 package com.example.homework_1;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 
 public class MainActivity extends AppCompatActivity {
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         System.out.println(" r & e =" + u);
         System.out.println(" r ^ e =" + o);
         System.out.println(" !r =" + q);
-        int month = 3; //март
+        int month = 3; /***март***/
         String season; //Время года
         switch (month) {
             case (1):
@@ -104,19 +102,17 @@ public class MainActivity extends AppCompatActivity {
             System.out.println("i = " + i);
             System.out.println("j = " + j);
         }
-        class Test {
-            public void main(String[] args) {
-                int[] array = {51,136,387};
-                for (int i:array) {
-                    System.out.println(i);
-                }
-            }
+
+        int[] array = {51, 136, 387};
+        for (int i : array) {
+            System.out.println(i);
         }
+
+        callMethodHere("Parameter");
     }
-}
-class MyMethod {
-    static void drinkBeer(String beer){
-        System.out.print("Я люблю пить" + beer);
+
+    private void callMethodHere(String paramter){
+        System.out.println(paramter);
     }
 
 }
