@@ -11,19 +11,8 @@
         android:layout_height="wrap_content"
         android:text="First fragment"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="143dp"
-        tools:layout_editor_absoluteY="158dp"
-        tools:layout="@layout/button_fragment" />
-
-    <Button
-        android:id="@+id/btnActThree"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Second fragment"
-        tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="124dp"
-        tools:layout_editor_absoluteY="534dp"
-        tools:layout="@layout/fragment_content"/>
+        tools:layout_editor_absoluteY="118dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
