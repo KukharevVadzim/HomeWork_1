@@ -11,14 +11,12 @@ import com.example.task_9.R;
 import com.example.task_9.SecondActivity;
 
 public class MainActivity extends AppCompatActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Button click = findViewById(R.id.btnActTwo);
         View.OnClickListener listener = new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), SecondActivity.class);
