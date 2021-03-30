@@ -1,5 +1,6 @@
 package com.example.task_9;
 
+import android.app.FragmentManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -36,6 +37,9 @@ protected void onCreate(Bundle savedInstanceState) {
             fragment2.commit();
         }
     });
+
+    FragmentManager fragmentManager = getFragmentManager();
+    fragmentManager.beginTransaction();
 
 }
 }
