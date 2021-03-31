@@ -10,8 +10,8 @@ import android.widget.TextView;
 import androidx.fragment.app.Fragment;
 import java.util.concurrent.TimeUnit;
 
-public class ContentFragment extends Fragment {
-    @Override
+public class ContentFragment extends RunnebleTask {
+
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_content, container, false);
         TextView textViewF = v.findViewById(R.id.btnActThree);
@@ -20,10 +20,6 @@ public class ContentFragment extends Fragment {
         }
         return v;
     }
-}
-
-
-class RunnebleTaskSecondActivity implements Runnable {
     public void run() {
         long delay = 3;
         for (int i = 20; i >= 1; i--) {
@@ -36,6 +32,11 @@ class RunnebleTaskSecondActivity implements Runnable {
         }
     }
 }
+
+
+
+
+
 
 
 

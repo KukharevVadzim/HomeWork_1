@@ -11,7 +11,7 @@ import androidx.fragment.app.Fragment;
 
 import java.util.concurrent.TimeUnit;
 
-class RunnebleTaskFirstActivity implements Runnable {
+class RunnebleTask implements Runnable {
     @Override
     public void run(){
         long delay = 1;

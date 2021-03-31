@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         View.OnClickListener listener = new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                thread1 = new Thread(new RunnebleTaskFirstActivity());
+                thread1 = new Thread(new RunnebleTask());
                 Log.d("RunnebleLoop", String.valueOf(thread1.getState()));
                 thread1.start();
                 Log.d("RunnebleLoop", String.valueOf(thread1.getState()));

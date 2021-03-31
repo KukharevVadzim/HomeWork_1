@@ -27,7 +27,7 @@ public class SecondActivity extends AppCompatActivity {
         View.OnClickListener listener = new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                thread2 = new Thread(new RunnebleTaskSecondActivity());
+                thread2 = new Thread(new ContentFragment());
                 Log.d("RunnebleLoop", String.valueOf(thread2.getState()));
                 thread2.start();
                 Log.d("RunnebleLoop", String.valueOf(thread2.getState()));
