@@ -11,15 +11,16 @@ import androidx.fragment.app.Fragment;
 
 import java.util.concurrent.TimeUnit;
 
-class RunnebleTaskSecondActivity implements Runnable {
+class RunnebleTaskFirstActivity implements Runnable {
     @Override
     public void run(){
-        long delay = 3;
-        for (int i =20; i >= 1; i--){
-            Log.d("RunnebleLoop", String.valueOf(i));
-            try{
-                TimeUnit.SECONDS.sleep(delay);
-            } catch (InterruptedException e){}
-        }
+        long delay = 1;
+            for (int i =0; i <= 10; i++){
+                Log.d("RunnebleLoop", String.valueOf(i));
+                try{
+                    TimeUnit.SECONDS.sleep(delay);
+                } catch (InterruptedException e){}
+            }
     }
 }
+
