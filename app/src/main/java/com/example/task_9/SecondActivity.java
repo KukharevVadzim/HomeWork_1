@@ -1,9 +1,11 @@
 package com.example.task_9;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,6 +22,10 @@ public class SecondActivity extends AppCompatActivity {
         setContentView(R.layout.activity_second);
         initThreadClickSecondActivity();
         initToastClicKSecondActivity();
+        TextView textView = findViewById(R.id.text);
+        Intent intent = getIntent();
+        String string1 = intent.getStringExtra(MainActivity.MAIN_ACTIVITY_DATA);
+        textView.setText(string1);
         }
 
     private void initThreadClickSecondActivity(){
