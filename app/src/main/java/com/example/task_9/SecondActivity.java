@@ -10,6 +10,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.util.concurrent.Callable;
 
 
@@ -51,5 +53,14 @@ public class SecondActivity extends AppCompatActivity {
                 Toast.makeText(v.getContext(), "Messeg" + thread2.getState(), Toast.LENGTH_LONG).show();
             }
         });
+    }
+    static void main(String[] args) throws Exception{
+       InputStream input = new FileInputStream("File.txt");
+       int size = input.available();
+
+          for(int j = 0; j < size; j++){
+              System.out.println((char)input.read()+ " ");
+       }
+    input.close();
     }
 }

@@ -12,7 +12,6 @@ class Person implements Cloneable {
         this.height = height;
         this.age = age;
     }
-
     @NonNull
     @Override
     protected Object clone() throws CloneNotSupportedException {

@@ -14,11 +14,17 @@ import android.widget.Toast;
 import com.example.task_9.R;
 import com.example.task_9.SecondActivity;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
+
 public class MainActivity extends AppCompatActivity {
 
+    static char[] value =  {'V', 'a', 'd', 'i', 'm'};;
     Thread thread1;
     static String MAIN_ACTIVITY_DATA = "MAIN_ACTIVITY_DATA";
     private EditText editText;
+    File file = new File("D:/Android/WorkProjecr/Task_9");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,6 +87,13 @@ public class MainActivity extends AppCompatActivity {
         Person Alina = new Person(70, 175, 24);
         Person copyBox = (Person) Alina.clone();
         System.out.println("Copy Person" + copyBox);
+    }
+    public static void main(String[] args) throws Exception {
+        OutputStream file = new FileOutputStream("File.txt");
+        for (char c : value){
+            file.write(c);
+        }
+        file.close();
     }
 }
 
