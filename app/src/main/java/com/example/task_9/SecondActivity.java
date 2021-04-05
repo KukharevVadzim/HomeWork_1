@@ -10,13 +10,18 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.io.BufferedReader;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.concurrent.Callable;
 
 
 public class SecondActivity extends AppCompatActivity {
     Thread thread2;
+    TextView textViewShow;
+    Button buttonShowText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +33,30 @@ public class SecondActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String string1 = intent.getStringExtra(MainActivity.MAIN_ACTIVITY_DATA);
         textView.setText(string1);
+        textViewShow = findViewById(R.id.textViewShowText);
+        buttonShowText = findViewById(R.id.buttonShowText);
+        buttonShowText.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                ((TextView) findViewById(R.id.textViewShowText)).setText(getIntent().getStringExtra("Vadim"));
+                FileAdd  fileAdd = new FileAdd ();
+                textViewShow.setText(fileAdd.getDataFromFIle());
+                try {
+                    FileInputStream fileInPut = openFileInput("‪D:\\Android\\file.txt");
+                    InputStreamReader reader = new InputStreamReader(fileInPut);
+                    BufferedReader buff = new BufferedReader(reader);
+                    StringBuffer strBuff = new StringBuffer();
+                    String lines;
+                    while ((lines = buff.readLine()) != null) {
+                        strBuff.append(lines);
+                    }
+                    textViewShow.setText(strBuff.toString());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
         }
 
     private void initThreadClickSecondActivity(){

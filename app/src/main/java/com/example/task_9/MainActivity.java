@@ -16,50 +16,68 @@ import com.example.task_9.SecondActivity;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.OutputStream;
+import java.text.BreakIterator;
 
 public class MainActivity extends AppCompatActivity {
 
-    static char[] value =  {'V', 'a', 'd', 'i', 'm'};;
     Thread thread1;
     static String MAIN_ACTIVITY_DATA = "MAIN_ACTIVITY_DATA";
-    private EditText editText;
-    File file = new File("D:/Android/WorkProjecr/Task_9");
+    public Button buttonCreateFile;
+    public EditText editText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        editText = findViewById(R.id.editText);
         initThreadClick();
         initToastClicK();
         Button click = findViewById(R.id.btnActTwo);
+        buttonCreateFile = findViewById(R.id.buttonCreateText);
         View.OnClickListener listener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), SecondActivity.class);
                 intent.putExtra(MAIN_ACTIVITY_DATA, editText.getText().toString());
+                FileAdd fileManager = new FileAdd();
+                fileManager.setDataToFile(editText.getText());
                 startActivity(intent);
             }
         };
+        buttonCreateFile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    FileOutputStream outPut = openFileOutput("‪D:\\Android\\file.txt", MODE_PRIVATE);
+                    outPut.write(editText.getText().toString().getBytes());
+                    outPut.close();
+                    editText.setText("");
+                    Toast.makeText(MainActivity.this, "Текст сохранен", Toast.LENGTH_SHORT).show();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                Intent intent4 = new Intent(v.getContext(), SecondActivity.class);
+                intent4.putExtra("Vadim", editText.getText().toString());
+                startActivity(intent4);
+            }
+        });
         click.setOnClickListener(listener);
     }
-    private void initThreadClick(){
+    private void initThreadClick () {
         Button click = findViewById(R.id.clickTest);
-        View.OnClickListener listener = new View.OnClickListener(){
+        View.OnClickListener listener = new View.OnClickListener() {
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
                 thread1 = new Thread(new RunnebleTask());
                 Log.d("RunnebleLoop", String.valueOf(thread1.getState()));
                 thread1.start();
                 Log.d("RunnebleLoop", String.valueOf(thread1.getState()));
             }
         };
-        click.setOnClickListener(listener);
+    }
 
-        }
-
-    private void initToastClicK(){
+    private void initToastClicK() {
         Button button = findViewById(R.id.btn);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
     public void Methods() {
         Person Vadim = new Person(65, 176, 26);
         Person Kolia = new Person(76, 177, 24);
@@ -88,12 +107,11 @@ public class MainActivity extends AppCompatActivity {
         Person copyBox = (Person) Alina.clone();
         System.out.println("Copy Person" + copyBox);
     }
-    public static void main(String[] args) throws Exception {
-        OutputStream file = new FileOutputStream("File.txt");
-        for (char c : value){
-            file.write(c);
-        }
-        file.close();
+
+    public void Strings() {
+        String str = "Android Developer";
+        String reverse = new StringBuffer(str).reverse().toString();
+        System.out.println("Строка в обратном порядке, после реверса: " + reverse);
     }
 }
 
