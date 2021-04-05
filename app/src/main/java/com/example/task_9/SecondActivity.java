@@ -1,5 +1,4 @@
 package com.example.task_9;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -39,7 +38,7 @@ public class SecondActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                ((TextView) findViewById(R.id.textViewShowText)).setText(getIntent().getStringExtra("Vadim"));
+                ((TextView) findViewById(R.id.textViewShowText)).setText(getIntent().getStringExtra("Вадим красавчик, сделал правильно"));
                 FileAdd  fileAdd = new FileAdd ();
                 textViewShow.setText(fileAdd.getDataFromFIle());
                 try {
@@ -57,7 +56,7 @@ public class SecondActivity extends AppCompatActivity {
                 }
             }
         });
-        }
+    }
 
     private void initThreadClickSecondActivity(){
         Button click = findViewById(R.id.clickTestSecondActivity);
@@ -71,9 +70,7 @@ public class SecondActivity extends AppCompatActivity {
             }
         };
         click.setOnClickListener(listener);
-
     }
-
     private void initToastClicKSecondActivity(){
         Button button = findViewById(R.id.btnSecondActivity);
         button.setOnClickListener(new View.OnClickListener() {
@@ -83,13 +80,14 @@ public class SecondActivity extends AppCompatActivity {
             }
         });
     }
-    static void main(String[] args) throws Exception{
-       InputStream input = new FileInputStream("File.txt");
-       int size = input.available();
 
-          for(int j = 0; j < size; j++){
-              System.out.println((char)input.read()+ " ");
-       }
-    input.close();
+    static void main(String[] args) throws Exception{
+        InputStream input = new FileInputStream("File.txt");
+        int size = input.available();
+
+        for(int j = 0; j < size; j++){
+            System.out.println((char)input.read()+ " ");
+        }
+        input.close();
     }
 }

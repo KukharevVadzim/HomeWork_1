@@ -1,7 +1,5 @@
 package com.example.task_9;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.media.browse.MediaBrowser;
 import android.os.Bundle;
@@ -10,7 +8,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import com.example.task_9.R;
 import com.example.task_9.SecondActivity;
 
@@ -24,15 +21,15 @@ public class MainActivity extends AppCompatActivity {
 
     Thread thread1;
     static String MAIN_ACTIVITY_DATA = "MAIN_ACTIVITY_DATA";
+    private EditText editText;
     public Button buttonCreateFile;
-    public EditText editText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        editText = findViewById(R.id.editText);
         initThreadClick();
-        initToastClicK();
         Button click = findViewById(R.id.btnActTwo);
         buttonCreateFile = findViewById(R.id.buttonCreateText);
         View.OnClickListener listener = new View.OnClickListener() {
@@ -58,13 +55,17 @@ public class MainActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
                 Intent intent4 = new Intent(v.getContext(), SecondActivity.class);
-                intent4.putExtra("Vadim", editText.getText().toString());
+                intent4.putExtra("Вадим красавчик, сделал правильно", editText.getText().toString());
                 startActivity(intent4);
+                Intent intent5 = new Intent(v.getContext(), ThirdActivity.class);
+                intent5.putExtra("Вадим красавчик, сделал правильно", editText.getText().toString());
+                startActivity(intent5);
             }
         });
         click.setOnClickListener(listener);
     }
-    private void initThreadClick () {
+
+    private void initThreadClick() {
         Button click = findViewById(R.id.clickTest);
         View.OnClickListener listener = new View.OnClickListener() {
             @Override
@@ -76,42 +77,39 @@ public class MainActivity extends AppCompatActivity {
             }
         };
     }
-
     private void initToastClicK() {
-        Button button = findViewById(R.id.btn);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(v.getContext(), "Messeg" + thread1.getState(), Toast.LENGTH_LONG).show();
-            }
-        });
+          Button button = findViewById(R.id.btn);
+          button.setOnClickListener(new View.OnClickListener() {
+              @Override
+              public void onClick(View v) {
+                  Toast.makeText(v.getContext(), "Messeg" + thread1.getState(), Toast.LENGTH_LONG).show();
+              }
+          });
     }
+                public void Methods() {
+                    Person Vadim = new Person(65, 176, 26);
+                    Person Kolia = new Person(76, 177, 24);
+                    Person Lesha = new Person(89, 198, 27);
+                    Person Dima = new Person(65, 176, 26);
+                    System.out.println("Equals1 " + Vadim.equals(Dima));
+                    System.out.println("Equals2 " + Kolia.equals(Lesha));
+                    System.out.println("ToString1: " + Vadim.toString());
+                    System.out.println("ToString1: " + Lesha.toString());
+                    int hashCode;
+                    hashCode = Kolia.hashCode();
+                    System.out.println("Hashcode1 Vadim: " + hashCode);
+                    System.out.println("Hashcode2 Kolia: " + hashCode);
+                }
 
-    public void Methods() {
-        Person Vadim = new Person(65, 176, 26);
-        Person Kolia = new Person(76, 177, 24);
-        Person Lesha = new Person(89, 198, 27);
-        Person Dima = new Person(65, 176, 26);
-        System.out.println("Equals1 " + Vadim.equals(Dima));
-        System.out.println("Equals2 " + Kolia.equals(Lesha));
-        System.out.println("ToString1: " + Vadim.toString());
-        System.out.println("ToString1: " + Lesha.toString());
-        int hashCode;
-        hashCode = Kolia.hashCode();
-        System.out.println("Hashcode1 Vadim: " + hashCode);
-        System.out.println("Hashcode2 Kolia: " + hashCode);
-    }
+                public void methodClone() throws CloneNotSupportedException {
+                    Person Alina = new Person(70, 175, 24);
+                    Person copyBox = (Person) Alina.clone();
+                    System.out.println("Copy Person" + copyBox);
+                }
 
-    public void methodClone() throws CloneNotSupportedException {
-        Person Alina = new Person(70, 175, 24);
-        Person copyBox = (Person) Alina.clone();
-        System.out.println("Copy Person" + copyBox);
-    }
-
-    public void Strings() {
-        String str = "Android Developer";
-        String reverse = new StringBuffer(str).reverse().toString();
-        System.out.println("Строка в обратном порядке, после реверса: " + reverse);
-    }
-}
-
+                public void Strings() {
+                    String str = "Android Developer";
+                    String reverse = new StringBuffer(str).reverse().toString();
+                    System.out.println("Строка в обратном порядке, после реверса: " + reverse);
+                }
+            };
