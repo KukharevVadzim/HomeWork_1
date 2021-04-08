@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), SecondActivity.class);
                 intent.putExtra(MAIN_ACTIVITY_DATA, editText.getText().toString());
-                FileAdd fileManager = new FileAdd();
+                FileManager fileManager = new FileManager();
                 fileManager.setDataToFile(editText.getText());
                 startActivity(intent);
             }
@@ -55,10 +55,8 @@ public class MainActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
                 Intent intent4 = new Intent(v.getContext(), SecondActivity.class);
-                intent4.putExtra("Вадим красавчик, сделал правильно", editText.getText().toString());
                 startActivity(intent4);
                 Intent intent5 = new Intent(v.getContext(), ThirdActivity.class);
-                intent5.putExtra("Вадим красавчик, сделал правильно", editText.getText().toString());
                 startActivity(intent5);
             }
         });
