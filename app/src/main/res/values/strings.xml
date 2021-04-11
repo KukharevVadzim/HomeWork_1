@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Task_9</string>
+    <string name="send_file">send file</string>
+    <string name="showtext">ShowText</string>
 </resources>

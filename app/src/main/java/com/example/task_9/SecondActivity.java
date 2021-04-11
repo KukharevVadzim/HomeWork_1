@@ -1,5 +1,4 @@
 package com.example.task_9;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,11 +9,18 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.concurrent.Callable;
 
 
 public class SecondActivity extends AppCompatActivity {
     Thread thread2;
+    TextView textViewShow;
+    Button buttonShowText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +32,27 @@ public class SecondActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String string1 = intent.getStringExtra(MainActivity.MAIN_ACTIVITY_DATA);
         textView.setText(string1);
-        }
+        textViewShow = findViewById(R.id.textViewShowText);
+        buttonShowText = findViewById(R.id.buttonShowText);
+        buttonShowText.setOnClickListener(new View.OnClickListener() {
+
+
+            @Override
+            public void onClick(View v) {
+                FileManager  fileManager = new FileManager ();
+                textViewShow.setText(fileManager.getDataFromFIle());
+                buttonShowText = findViewById(R.id.buttonShowText);
+                buttonShowText.setOnClickListener(new View.OnClickListener() {
+
+                    @Override
+                    public void onClick(View v) {
+                        FileManager  fileManager = new FileManager ();
+                        textViewShow.setText(fileManager.getDataFromFIle().toString());
+                    }
+                });
+            }
+        });
+    }
 
     private void initThreadClickSecondActivity(){
         Button click = findViewById(R.id.clickTestSecondActivity);
@@ -40,9 +66,7 @@ public class SecondActivity extends AppCompatActivity {
             }
         };
         click.setOnClickListener(listener);
-
     }
-
     private void initToastClicKSecondActivity(){
         Button button = findViewById(R.id.btnSecondActivity);
         button.setOnClickListener(new View.OnClickListener() {
@@ -51,5 +75,15 @@ public class SecondActivity extends AppCompatActivity {
                 Toast.makeText(v.getContext(), "Messeg" + thread2.getState(), Toast.LENGTH_LONG).show();
             }
         });
+    }
+
+    static void main(String[] args) throws Exception{
+        InputStream input = new FileInputStream("File.txt");
+        int size = input.available();
+
+        for(int j = 0; j < size; j++){
+            System.out.println((char)input.read()+ " ");
+        }
+        input.close();
     }
 }
