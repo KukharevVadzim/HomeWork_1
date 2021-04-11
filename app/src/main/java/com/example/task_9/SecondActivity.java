@@ -30,8 +30,6 @@ public class SecondActivity extends AppCompatActivity {
         initToastClicKSecondActivity();
         TextView textView = findViewById(R.id.text);
         Intent intent = getIntent();
-        String string1 = intent.getStringExtra(MainActivity.MAIN_ACTIVITY_DATA);
-        textView.setText(string1);
         textViewShow = findViewById(R.id.textViewShowText);
         buttonShowText = findViewById(R.id.buttonShowText);
         buttonShowText.setOnClickListener(new View.OnClickListener() {
