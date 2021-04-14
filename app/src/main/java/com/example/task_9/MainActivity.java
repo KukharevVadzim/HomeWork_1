@@ -86,19 +86,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-    public Callable<Integer> getDataFromCallable() {
-        Callable<Integer> callable = new Callable<Integer>() {
-            @Override
-            public Integer call() throws Exception {
-                int summa = 0;
-                for (int i = 2; i <= Integer.parseInt(editText.getText().toString()); i++) {
-                    summa += i;
-                }
-                return summa;
-            }
-        };
-        return callable;
-    }
 
     public void WorkWithArray() {
         int[] arrayStart = new int[]{1, 4, 16, 4, 23, 4, 28, 8, 4};
@@ -175,26 +162,6 @@ public class MainActivity extends AppCompatActivity {
             }
         };
         return callable;
-    }
-
-    public void ArrayWithLinkedList() {
-        ArrayList<Double> arrayList = new ArrayList<>();
-        LinkedList<Double> linkedList = new LinkedList<>();
-        int a = 1000000;
-        int b = 1000;
-        long time = System.currentTimeMillis();
-        for (int i = 0; i < a; i++) {
-            arrayList.add(Math.random());
-            linkedList.add(Math.random());
-        }
-        for (int i = 0; i < b; i++) {
-            arrayList.get((int) (Math.random() * a - 1));
-        }
-        System.out.println(System.currentTimeMillis() - time);
-        for (int i = 0; i < b; i++) {
-            linkedList.get((int) (Math.random() * a - 1));
-        }
-        System.out.println(System.currentTimeMillis() - time);
     }
 
     public void initThreadClick() {
