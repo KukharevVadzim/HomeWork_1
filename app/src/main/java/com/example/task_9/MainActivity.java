@@ -15,6 +15,12 @@ import java.util.concurrent.Callable;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.FutureTask;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.HashSet;
+
+
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -81,18 +87,31 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public Callable<Integer> getDataFromCallable() {
-        Callable<Integer> callable = new Callable<Integer>() {
-            @Override
-            public Integer call() throws Exception {
-                int summa = 0;
-                for (int i = 2; i <= Integer.parseInt(editText.getText().toString()); i++) {
-                    summa += i;
-                }
-                return summa;
+    public void WorkWithArray() {
+        int[] arrayStart = new int[]{1, 4, 16, 4, 23, 4, 28, 8, 4};
+        int[] arrayAfter = remove(arrayStart, 4);
+        System.out.println("ArrayStart: " + Arrays.toString(arrayStart));
+        System.out.println("ArrayAfter: " + Arrays.toString(arrayAfter));
+    }
+
+    private int[] remove(int[] start, int remove) {
+        int a = 0;
+        for (int i = 0; i < start.length; i++) {
+            if (start[i] != remove) {
+                a = a + 1;
             }
-        };
-        return callable;
+        }
+        int[] after = new int[a];
+        for (int i = 0, j = 0; i < start.length; i++) {
+            if (start[i] != remove) {
+                after[j++] = start[i];
+            }
+        }
+        return after;
+    }
+
+    public <A> Collection<A> removeDuplicates(Collection<A> collection) {
+        return new HashSet<>(collection);
     }
 
     public void ArrayWithLinkedList() {
@@ -113,6 +132,36 @@ public class MainActivity extends AppCompatActivity {
             linkedList.get((int) (Math.random() * a - 1));
         }
         System.out.println(System.currentTimeMillis() - time);
+        buttonResult = findViewById(R.id.buttonResult);
+        buttonResult.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                textViewResult = findViewById(R.id.textViewResult);
+                Callable callable = getDataFromCallable();
+                FutureTask futureTask = new FutureTask(callable);
+                new Thread(futureTask).start();
+                try {
+                    textViewResult.setText(futureTask.get().toString());
+                } catch (ExecutionException | InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        });
+    }
+
+    public Callable<Integer> getDataFromCallable() {
+        Callable<Integer> callable = new Callable<Integer>() {
+            @Override
+            public Integer call() throws Exception {
+                int summa = 0;
+                for (int i = 2; i <= Integer.parseInt(editText.getText().toString()); i++) {
+                    summa += i;
+                }
+                return summa;
+            }
+        };
+        return callable;
     }
 
     public void initThreadClick() {
