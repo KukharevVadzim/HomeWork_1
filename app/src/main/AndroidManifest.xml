@@ -10,6 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Task_9">
         <activity android:name=".ThirdActivity"></activity>
+        <activity android:name=".PalindromeActivity"></activity>
+        <activity android:name=".ShowTextFromFileActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
