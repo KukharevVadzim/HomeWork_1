@@ -3,4 +3,6 @@
     <string name="send_file">send file</string>
     <string name="showtext">ShowText</string>
     <string name="result">Result</string>
+    <string name="go_to_palindrome">Go To Palindrome</string>
+    <string name="check_palindrome">Check palindrome</string>
 </resources>

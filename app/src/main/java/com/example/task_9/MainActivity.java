@@ -18,9 +18,9 @@ import java.util.concurrent.FutureTask;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
-
-
-
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     public Button buttonCreateFile;
     public Button buttonResult;
     public TextView textViewResult;
+    public Button buttonGoToPalindrome;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
         initThreadClick();
         Button click = findViewById(R.id.btnActTwo);
         buttonCreateFile = findViewById(R.id.buttonCreateText);
+        buttonGoToPalindrome = findViewById(R.id.buttonGoToPalindrome);
         View.OnClickListener listener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -85,6 +87,28 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+        buttonGoToPalindrome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentPalindrome = new Intent(v.getContext(), PalindromeActivity.class);
+                startActivity(intentPalindrome);
+            }
+        });
+    }
+
+    public Callable<Integer> getDataFromCallable() {
+        Callable<Integer> callable = new Callable<Integer>() {
+            @Override
+            public Integer call() throws Exception {
+                int summa = 0;
+                for (int i = 2; i <= Integer.parseInt(editText.getText().toString()); i++) {
+                    summa += i;
+                }
+                return summa;
+            }
+        };
+        return callable;
     }
 
     public void WorkWithArray() {
@@ -150,20 +174,6 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public Callable<Integer> getDataFromCallable() {
-        Callable<Integer> callable = new Callable<Integer>() {
-            @Override
-            public Integer call() throws Exception {
-                int summa = 0;
-                for (int i = 2; i <= Integer.parseInt(editText.getText().toString()); i++) {
-                    summa += i;
-                }
-                return summa;
-            }
-        };
-        return callable;
-    }
-
     public void initThreadClick() {
         Button click = findViewById(R.id.clickTest);
         View.OnClickListener listener = new View.OnClickListener() {
@@ -192,25 +202,18 @@ public class MainActivity extends AppCompatActivity {
         String reverse = new StringBuffer(str).reverse().toString();
         System.out.println("Строка в обратном порядке, после реверса: " + reverse);
     }
+
+    public void workWtithMap(HashMap<Integer, String> mapa) {
+        mapa.put(1, "First string");
+        mapa.put(2, "Second string");
+        mapa.put(3, "Third string");
+        for (Map.Entry<Integer, String> describe : mapa.entrySet()) {
+            System.out.println("Key: " + describe.getKey() + "Value: " + describe.getValue());
+        }
+        Iterator iterator = mapa.entrySet().iterator();
+        while (iterator.hasNext()) {
+            Map.Entry exampleWhile = (Map.Entry) iterator.next();
+            System.out.println("Ключ: " + exampleWhile.getKey() + "Значение: " + exampleWhile.getValue());
+        }
+    }
 }
-//    public void Methods() {
-//        Person Vadim = new Person(65, 176, 26);
-//        Person Kolia = new Person(76, 177, 24);
-//        Person Lesha = new Person(89, 198, 27);
-//        Person Dima = new Person(65, 176, 26);
-//        System.out.println("Equals1 " + Vadim.equals(Dima));
-//        System.out.println("Equals2 " + Kolia.equals(Lesha));
-//        System.out.println("ToString1: " + Vadim.toString());
-//        System.out.println("ToString1: " + Lesha.toString());
-//        int hashCode;
-//        hashCode = Kolia.hashCode();
-//        System.out.println("Hashcode1 Vadim: " + hashCode);
-//        System.out.println("Hashcode2 Kolia: " + hashCode);
-//    }
-//
-//    public void methodClone() throws CloneNotSupportedException {
-//        Person Alina = new Person(70, 175, 24);
-//        Person copyBox = (Person) Alina.clone();
-//        System.out.println("Copy Person" + copyBox);
-//    }
-//}
